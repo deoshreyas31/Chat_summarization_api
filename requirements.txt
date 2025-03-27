@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+motor
+pymongo
+openai
+textblob
+pydantic
+python-dotenv
+streamlit
+requests

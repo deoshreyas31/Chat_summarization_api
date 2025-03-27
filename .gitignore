@@ -1,0 +1,31 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+env/
+*.egg-info/
+
+# Ignore environment variables
+.env
+
+# Ignore logs and database files
+*.log
+*.sqlite3
+*.db
+
+# Ignore VSCode and JetBrains IDE settings
+.vscode/
+.idea/
+
+# Ignore Docker-related files
+/data
+/db
+*.tar
+*.img
+
+# Ignore node_modules (if frontend present)
+node_modules/

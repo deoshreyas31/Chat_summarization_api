@@ -1,0 +1,33 @@
+version: "3.8"  # Remove if you're using latest Docker Compose
+
+services:
+  app:
+    build: .
+    container_name: chat-api
+    ports:
+      - "8000:8000"
+    depends_on:
+      mongo:
+        condition: service_healthy  # Ensure MongoDB is ready
+    environment:
+      MONGO_URI: mongodb://mongo:27017/chatdb
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    volumes:
+      - .:/app
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    container_name: chat-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.runCommand('ping').ok"]
+      interval: 10s
+      retries: 5
+
+volumes:
+  mongo_data:
